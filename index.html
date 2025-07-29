@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel = "stylesheet" href="style.css">
+</head>
+<body>
+  <h1> === My Expense Tracker === </h1>
+  <h2>Total Spent: $<span id = "totalAmount">0</span></h2>
+
+  <div id="formSection">
+    <h2>Add a New Expense</h2>
+    <label>Title:</label><br>
+    <input type="text" id="title"><br><br>
+
+    <label>Amount:</label><br>
+    <input type="number" id="amount"><br><br>
+
+    <button onclick="addExpense()">Add Expense</button>
+  </div>
+
+  <hr>
+
+  <div id="expenseSection">
+    <h2>All Expenses</h2>
+    <ul id="expenseList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
