@@ -1,7 +1,9 @@
 # 💸 Expense Tracker
 
-A simple and beginner-friendly web app to track your daily expenses. Built using **HTML**, **CSS**, and **JavaScript** — no frameworks or complex libraries.
+A simple and beginner-friendly web app to track your daily expenses. Built using **HTML**, **CSS**, and **JavaScript** .
 
+![GitHub repo size](https://img.shields.io/github/repo-size/unnatii14/expense-tracker)
+![GitHub last commit](https://img.shields.io/github/last-commit/unnatii14/expense-tracker)
 ---
 
 ## 📌 Features
@@ -28,6 +30,26 @@ A simple and beginner-friendly web app to track your daily expenses. Built using
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run Locally
 
-1. Clone the repository  
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/unnatii14/expense-tracker.git
+   cd expense-tracker
+
+---
+
+### ✅ What You’ll Learn
+
+- Basics of DOM manipulation using JavaScript  
+- Handling form inputs and user interaction  
+- Storing data in the browser using `localStorage`  
+- Building and styling a clean UI with HTML & CSS  
+- Using Git and GitHub for version control and collaboration  
+
+---
+
+### 🎯 Project Outcome
+
+By completing this project, you'll have a fully working expense tracking tool built from scratch using core web technologies - a great foundation for more advanced apps in the future!
+
