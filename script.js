@@ -1,57 +1,57 @@
-let expenses = [];
+const titleInput = document.getElementById('title');
+const amountInput = document.getElementById('amount');
+const list = document.getElementById('expenseList');
+const totalSpan = document.getElementById('totalAmount');
 
+// local Storage
+let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+updateList();
+
+// add expense
 function addExpense() {
-  let title = document.getElementById('title').value;
-  let amount = document.getElementById('amount').value;
+  const title = titleInput.value.trim();
+  const amount = parseFloat(amountInput.value);
 
-  if (title === '' || amount === '') {
-    alert('Please enter both title and amount.');
+  if (!title || isNaN(amount) || amount <= 0) {
+    alert("Please enter valid title and amount.");
     return;
   }
 
-  amount = Number(amount); 
-
-    const expense = {
-    id: Date.now(), 
-    title: title,
-    amount: amount
+  const expense = {
+    id: Date.now(),
+    title,
+    amount
   };
 
   expenses.push(expense);
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+  updateList();
 
-  displayExpense(expense);
-  updateTotal();
-
-  document.getElementById('title').value = '';
-  document.getElementById('amount').value = '';
+  titleInput.value = '';
+  amountInput.value = '';
 }
 
-function displayExpense(expense) {
-  const list = document.getElementById('expenseList');
-  const item = document.createElement('li');
-  item.setAttribute('data-id', expense.id); // store ID in element
-  item.innerHTML = `
-    ${expense.title} - $${expense.amount}
-    <button class="delete-btn" onclick="deleteExpense(${expense.id})">🗑</button>`;
-  list.appendChild(item);
-}
-
+// delete expense
 function deleteExpense(id) {
-  // Remove from array
   expenses = expenses.filter(exp => exp.id !== id);
-
-  // Remove from UI
-  const list = document.getElementById('expenseList');
-  const item = list.querySelector(`[data-id="${id}"]`);
-  if (item) {
-    list.removeChild(item);
-  }
-
-  updateTotal();
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+  updateList();
 }
+// ui
+function updateList() {
+  list.innerHTML = '';
+  let total = 0;
 
-function updateTotal(){
-    let total = 0;
-    expenses.forEach(exp => total += exp.amount);
-    document.getElementById("totalAmount").textContent = total.toFixed(2);
+  expenses.forEach(exp => {
+    total += exp.amount;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+      ${exp.title} - $${exp.amount.toFixed(2)}
+      <button onclick="deleteExpense(${exp.id})">Delete</button>
+    `;
+    list.appendChild(li);
+  });
+
+  totalSpan.textContent = total.toFixed(2);
 }
